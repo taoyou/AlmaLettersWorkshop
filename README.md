@@ -16,5 +16,7 @@ The repository structure is described below.
 │   ├── 
 │   ├── fuluserloancourtesyletter.xsl
 │   └── fulplaceonholdshelf.xsl
+│
 ├── LetterXML (not posted on github)      
+│
 └── Output (not posted on github)
