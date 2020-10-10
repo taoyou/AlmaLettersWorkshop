@@ -4,7 +4,7 @@ Local setup will have a folder for letterXML and a folder for letterOutput, thos
 
 ## Repo structure
 The repository structure is described below. 
-
+```
 ├── README.md                  : Description of this repository
 ├── LICENSE                    : CC0 license description
 │
