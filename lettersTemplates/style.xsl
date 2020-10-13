@@ -7,8 +7,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
  <style>
  body {@@language_related_body_css@@ background-color:#fff}
  .listing td {border-bottom: 1px solid #eee}
- .listing tr:hover td {background-color:#eee}
+ .listing tr:hover td {background-color:#c0c0c0}
  .listing th {background-color:#f5f5f5 }
+ .listing tr:nth-child(odd) {background-color: #eee; }
  h4{line-height: 0.2em}
  </style>
 </xsl:template>

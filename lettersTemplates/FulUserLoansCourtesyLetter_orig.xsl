@@ -2,12 +2,12 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="../Components/header.xsl" />
-  <xsl:include href="../Components/senderReceiver.xsl" />
-  <xsl:include href="../Components/mailReason.xsl" />
-  <xsl:include href="../Components/footer.xsl" />
-  <xsl:include href="../Components/style.xsl" />
-  <xsl:include href="../Components/recordTitle.xsl" />
+  <xsl:include href="header.xsl" />
+  <xsl:include href="senderReceiver.xsl" />
+  <xsl:include href="mailReason.xsl" />
+  <xsl:include href="footer.xsl" />
+  <xsl:include href="style.xsl" />
+  <xsl:include href="recordTitle.xsl" />
 
   <xsl:template match="/">
     <html>
@@ -22,71 +22,63 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <xsl:call-template name="head" /><!-- header.xsl -->
         <xsl:call-template name="senderReceiver" /> <!-- SenderReceiver.xsl -->
 
-		<br />
-		<xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
-
+        <br />
+        <xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
 
         <div class="messageArea">
           <div class="messageBody">
 
-			<table cellspacing="0" cellpadding="5" border="0">
-              <tr>
-              	<td>
-					<xsl:if test="notification_data/short_loans='true'">
-						<b>@@short_loans_message@@</b>
-					</xsl:if>
-					<xsl:if test="notification_data/short_loans='false'">
-						<b>@@message@@</b>
-					</xsl:if>
-					<br/><br/>
-                </td>
-              </tr>
-              <tr>
-              	<td>
-					<b>@@loans@@</b>
-                </td>
-              </tr>
-
+            <table cellspacing="0" cellpadding="5" border="0">
               <tr>
                 <td>
-                	<table cellpadding="5" class="listing">
-						<xsl:attribute name="style">
-							<xsl:call-template name="mainTableStyleCss" /> <!-- style.xsl -->
-						</xsl:attribute>
-						<tr>
-							<th>@@title@@</th>
-							<th>@@description@@</th>
-							<th>@@author@@</th>
-							<th>@@due_date@@</th>
-							<th>@@library@@</th>
-						</tr>
-
-                		<xsl:for-each select="notification_data/item_loans/item_loan">
-						<tr>
-							<td><xsl:value-of select="title"/></td>
-							<td><xsl:value-of select="description"/></td>
-							<td><xsl:value-of select="author"/></td>
-							<td><xsl:value-of select="due_date"/></td>
-							<td><xsl:value-of select="library_name"/></td>
-
-						</tr>
-						</xsl:for-each>
-
-                	</table>
+                  <xsl:if test="notification_data/short_loans='true'">
+                    <b>@@short_loans_message@@</b>
+                  </xsl:if>
+                  <xsl:if test="notification_data/short_loans='false'">
+                    <b>@@message@@</b>
+                  </xsl:if>
+                  <br/><br/>
                 </td>
               </tr>
-             </table>
-				<br />
-				<br />
-				@@additional_info_1@@
-			<br />
-			@@additional_info_2@@
-				<br />
-			<table>
-				<tr><td>@@sincerely@@</td></tr>
-				<tr><td>@@department@@</td></tr>
-			</table>
+              <tr>
+                <td> <b>@@loans@@</b> </td>
+              </tr>
+            </table>
+            
+            <table cellpadding="5" class="listing">
+              <xsl:attribute name="style">
+                <xsl:call-template name="mainTableStyleCss" /> <!-- style.xsl -->
+              </xsl:attribute>
+              
+              <tr>
+                <th>@@title@@</th>
+                <th>@@description@@</th>
+                <th>@@author@@</th>
+                <th>@@due_date@@</th>
+                <th>@@library@@</th>
+              </tr>
 
+              <xsl:for-each select="notification_data/item_loans/item_loan">
+              <tr>
+                <td><xsl:value-of select="title"/></td>
+                <td><xsl:value-of select="description"/></td>
+                <td><xsl:value-of select="author"/></td>
+                <td><xsl:value-of select="due_date"/></td>
+                <td><xsl:value-of select="library_name"/></td>
+              </tr>
+              </xsl:for-each>
+
+            </table>
+
+            <br /> <br /> @@additional_info_1@@
+            <br /> <br /> @@additional_info_2@@
+            <br />
+        
+            <table>
+              <tr><td>@@sincerely@@</td></tr>
+              <tr><td>@@department@@</td></tr>
+            </table>
+        
           </div>
         </div>
 
