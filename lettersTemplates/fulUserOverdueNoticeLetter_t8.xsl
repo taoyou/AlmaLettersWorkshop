@@ -57,17 +57,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
           	<xsl:for-each select="notification_data/item_loans/item_loan">
 			      <tr>
-				      <td>
-                <xsl:variable name="altcallnum" select="alternative_call_number" />
-                <xsl:choose>
-                  <xsl:when test="string($altcallnum)">
-                    <xsl:value-of select="alternative_call_number"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:value-of select="call_number"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </td>  
+			        <!-- call formatCallnumber template --> 
+              <td>
+                  <xsl:call-template name="formatCallnumber">
+                    <xsl:with-param name="callnumber" select="call_number" />
+                    <xsl:with-param name="altcallnum" select="alternative_call_number" />
+                    <xsl:with-param name="description" select="description" />
+                  </xsl:call-template>
+              </td>
+              
               <td><xsl:value-of select="title"/></td>
               <td>
                 <xsl:value-of select="barcode"/>
